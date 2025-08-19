@@ -1,0 +1,69 @@
+﻿@page "/home-lab"
+@inherits LayoutComponentBase
+
+<PageTitle>Home Lab Setup</PageTitle>
+
+<MudPaper Elevation="2" Class="pa-5 ma-2">
+    <MudText Typo="Typo.h4" GutterBottom="true">Home Lab Setup</MudText>
+    <br />
+    <MudText Typo="Typo.body1" GutterBottom="true">
+        This page provides an overview of my home lab setup, which is used for various projects and learning purposes.
+        <br />
+        It includes details about the hardware, software, and network configurations I use.
+    </MudText>
+    <br />
+    <MudText Typo="Typo.body2" GutterBottom="true">
+        The home lab is designed to be flexible and scalable, allowing me to experiment with different technologies and setups.
+    </MudText>
+    <br />
+    <MudText Typo="Typo.h6" GutterBottom="true">
+        Hardware:
+    </MudText>
+    <MudText Typo="Typo.body2" GutterBottom="true">
+        My home lab is built to run on my laptop, which is an HP 15-ef2030ca Notebook. This features am AMD Rysen 7 5700U processor, 16GB of RAM, and a 1TB NvME.
+        <br />
+        The laptop is running Windows 11 Home.
+        <br />
+        When I encountered problems running multiple virtual machines, I upgraded the RAM to 64GB using GSkill Ripjaws Series.
+    </MudText>
+    <br />
+    <MudText Typo="Typo.h6" GutterBottom="true">
+        Software:
+    </MudText>
+    <MudText Typo="Typo.body2" GutterBottom="true">
+        Oracle VirtualBox is used for virtualization, allowing me to run multiple operating systems and applications in isolated environments.
+        <br />
+    </MudText>
+    <br />
+    <MudText Typo="Typo.h6" GutterBottom="true">
+        Virtual Machines:
+    </MudText>
+    <MudText Typo="Typo.body2" GutterBottom="true">
+        <MudList T="string" ReadOnly="true" Dense="true">
+            <MudListSubheader Inset>Pentesting Machines</MudListSubheader>
+            <MudListItem>Windows Server 2019</MudListItem>
+            <MudListItem>Windows 10 Client x 2</MudListItem>
+            <MudListItem>Kali Linux</MudListItem>
+            <MudListItem>pfSense Virtual Router</MudListItem>
+        </MudList>
+        <br />
+        <MudList T="string" ReadOnly="true" Dense="true">
+            <MudListSubheader Inset>Vulnerable Machines</MudListSubheader>
+            <MudListItem>Mr. Robot</MudListItem>
+            <MudListItem>Atom</MudListItem>
+            <MudListItem>Metasploitable 2</MudListItem>
+        </MudList>
+    </MudText>
+    <br />
+    <MudText Typo="Typo.h6" GutterBottom="true">
+        Virtual Network:
+    </MudText>
+    <MudText Typo="Typo.body2" GutterBottom="true">
+        I utilize the Internal Network feature of VirtualBox to allow me to have vulnerable machines networked without exposing them to the internet.
+        <br />
+        The pfSense virtual router helps keep things connected, allows my Kali Linux virtual machine to connect to both the vulnerable machines and the internet.
+    </MudText>
+</MudPaper>
+@code {
+
+}
