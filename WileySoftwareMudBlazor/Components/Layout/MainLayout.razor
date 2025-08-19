@@ -9,6 +9,13 @@
             <MudImage Src="Images/ChrisWiley.jpg" />
         </MudAvatar>
         <MudText Typo="Typo.h5" Class="ml-3">Chris Wiley - Junior QA Analyst</MudText>
+        <MudSpacer />
+        <MudLink Href="https://github.com/SithLord2K">
+            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Edge="Edge.End" />
+        </MudLink>
+        <MudLink Href="https://www.linkedin.com/in/chris-wiley-007b9585/">
+            <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Inherit" Edge="Edge.End" />
+        </MudLink>
     </MudAppBar>
     <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="285px">
         <NavMenu />
@@ -17,16 +24,11 @@
         @Body
     </MudMainContent>
     <MudAppBar Dense="true" Bottom="true" Elevation="1" Style="top: auto; bottom: 0" Class="mt-4" Fixed="true">
+        <MudSpacer />
         <MudText Typo="Typo.body2">&copy; @DateTime.Now.Year WileySoftware</MudText>
         <MudDivider Vertical="true" Class="mx-2" DividerType="DividerType.Inset" />
-        <MudLink Href="https://github.com/SithLord2K">
-            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Edge="Edge.Start" />
-        </MudLink>
-        <MudLink Href="https://www.linkedin.com/in/chris-wiley-007b9585/">
-            <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Inherit" Edge="Edge.Start" />
-        </MudLink>
-        <MudDivider Vertical="true" Class="mx-2" DividerType="DividerType.Inset" />
         <MudText Typo="Typo.body2">Site created with Blazor, using C# and the MudBlazor Component Library</MudText>
+        <MudSpacer />
     </MudAppBar>
 </MudLayout>
 
