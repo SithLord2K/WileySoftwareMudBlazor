@@ -5,9 +5,6 @@
     <MudAppBar Elevation="1">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
         <br/>
-        <MudAvatar>
-            <MudImage Src="Images/ChrisWileyAvatar.jpg" />
-        </MudAvatar>
         <MudText Typo="Typo.h5" Class="ml-3">Chris Wiley - Junior QA Analyst</MudText>
     </MudAppBar>
     <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="285px">
@@ -69,6 +66,7 @@
     {
         useDarkMode = newValue;
         StateHasChanged();
+        await Task.CompletedTask;
     }
 }
 
