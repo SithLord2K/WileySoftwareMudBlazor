@@ -2,15 +2,18 @@
 
 <MudThemeProvider @ref="@provider" @bind-IsDarkMode="@useDarkMode" />
 <MudLayout>
-    <MudAppBar Elevation="1">
+    <MudAppBar Elevation="1" style="height: 75px">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
         <br/>
+        <MudAvatar>
+            <MudImage Src="Images/ChrisWiley.jpg" />
+        </MudAvatar>
         <MudText Typo="Typo.h5" Class="ml-3">Chris Wiley - Junior QA Analyst</MudText>
     </MudAppBar>
     <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="285px">
         <NavMenu />
     </MudDrawer>
-    <MudMainContent Class="pt-16 pa-4">
+    <MudMainContent Class="pt-16 pa-4" Style="margin-top: 25px; margin-bottom: 30px;">
         @Body
     </MudMainContent>
     <MudAppBar Dense="true" Bottom="true" Elevation="1" Style="top: auto; bottom: 0" Class="mt-4" Fixed="true">
