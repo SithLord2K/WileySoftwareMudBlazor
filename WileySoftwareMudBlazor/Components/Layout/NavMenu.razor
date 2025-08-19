@@ -1,0 +1,35 @@
+﻿
+<MudNavMenu>
+    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
+    <MudNavGroup title="Cybersecurity Certificates" Expanded="false" Icon="@Icons.Material.Filled.Security">
+        <MudNavGroup Title="TCM Security Courses" Icon="@tcmIcon" Expanded="false">
+            <MudNavGroup Title="PNPT Course Completion" Expanded="true" Icon="@pnptIcon">
+                <MudNavLink Href="pnpt-courses/peh" Match="NavLinkMatch.Prefix" Icon="@pehIcon">Practical Ethical Hacking</MudNavLink>
+                <MudNavLink Href="pnpt-courses/osint" Match="NavLinkMatch.Prefix" Icon="@osintIcon">OSINT</MudNavLink>
+                <MudNavLink Href="pnpt-courses/linux-privesc" Match="NavLinkMatch.Prefix" Icon="@lpeIcon">Linux Privilege Escalation</MudNavLink>
+                <MudNavLink Href="pnpt-courses/windows-privesc" Match="NavLinkMatch.Prefix" Icon="@wpeIcon">Windows Privilege Escalation</MudNavLink>
+                <MudNavLink Href="pnpt-courses/csharp-101" Match="NavLinkMatch.Prefix" Icon="@csharp101Icon">C# 101 for Hackers</MudNavLink>
+            </MudNavGroup>
+        </MudNavGroup>
+        <MudNavGroup Title="Capture the Flag" Icon="@Icons.Material.Filled.Flag" Expanded="false">
+            <MudNavLink Href="ctf/metactf" Match="NavLinkMatch.Prefix" Icon="@metactfIcon">MetaCTF Flash CTFs</MudNavLink>
+        </MudNavGroup>
+    </MudNavGroup>
+    <MudNavGroup Title="Personal Projects" Icon="@Icons.Material.Filled.Code" Expanded="false">
+        <MudNavLink Href="poolleague" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Web">Welland Pool League</MudNavLink>
+        <MudNavLink Href="autorecon" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Terminal">Autorecon Install Script</MudNavLink>
+    </MudNavGroup>
+
+</MudNavMenu>
+
+@code
+{
+    private const string pehIcon = "<image width=\"32\" height=\"32\" xlink:href=\"icons/peh.png\" />";
+    private const string osintIcon = "<image width=\"32\" height=\"32\" xlink:href=\"icons/OSINT.png\" />";
+    private const string pnptIcon = "<image width=\"32\" height=\"32\" xlink:href=\"icons/pnpt-new2.png\" />";
+    private const string lpeIcon = "<image width=\"32\" height=\"32\" xlink:href=\"icons/LPE.png\" />";
+    private const string wpeIcon = "<image width=\"32\" height=\"32\" xlink:href=\"icons/WPE.png\" />";
+    private const string csharp101Icon = "<image width=\"32\" height=\"32\" xlink:href=\"icons/C-Sharp101.png\" />";
+    private const string tcmIcon = "<image width=\"32\" height=\"32\" xlink:href=\"icons/TCM-sec.png\" />";
+    private const string metactfIcon = "<image width=\"32\" height=\"32\" xlink:href=\"icons/MetaCTF_New.png\" />";
+}

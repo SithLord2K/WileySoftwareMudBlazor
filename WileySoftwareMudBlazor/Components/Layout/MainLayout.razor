@@ -1,0 +1,75 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider @ref="@provider" @bind-IsDarkMode="@useDarkMode" />
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
+        <br/>
+        <MudAvatar>
+            <MudImage Src="Images/ChrisWileyAvatar.jpg" />
+        </MudAvatar>
+        <MudText Typo="Typo.h5" Class="ml-3">Chris Wiley - Junior QA Analyst</MudText>
+    </MudAppBar>
+    <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="285px">
+        <NavMenu />
+    </MudDrawer>
+    <MudMainContent Class="pt-16 pa-4">
+        @Body
+    </MudMainContent>
+    <MudAppBar Dense="true" Bottom="true" Elevation="1" Style="top: auto; bottom: 0" Class="mt-4" Fixed="true">
+        <MudText Typo="Typo.body2">&copy; @DateTime.Now.Year WileySoftware</MudText>
+        <MudDivider Vertical="true" Class="mx-2" DividerType="DividerType.Inset" />
+        <MudLink Href="https://github.com/SithLord2K">
+            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Edge="Edge.Start" />
+        </MudLink>
+        <MudLink Href="https://www.linkedin.com/in/chris-wiley-007b9585/">
+            <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Inherit" Edge="Edge.Start" />
+        </MudLink>
+        <MudDivider Vertical="true" Class="mx-2" DividerType="DividerType.Inset" />
+        <MudText Typo="Typo.body2">Site created with Blazor, using C# and the MudBlazor Component Library</MudText>
+    </MudAppBar>
+</MudLayout>
+
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
+
+@code {
+
+    private bool _drawerOpen = true;
+
+    private bool useDarkMode;
+    private MudThemeProvider provider = new();
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    private void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            useDarkMode = await provider.GetSystemDarkModeAsync();
+            await provider.WatchSystemDarkModeAsync(OnSystemPreferenceChanged);
+            StateHasChanged();
+        }
+        await base.OnAfterRenderAsync(firstRender);
+    }
+
+    private async Task OnSystemPreferenceChanged(bool newValue)
+    {
+        useDarkMode = newValue;
+        StateHasChanged();
+    }
+}
+
+
