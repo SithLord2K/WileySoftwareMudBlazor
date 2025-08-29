@@ -2,7 +2,7 @@
 
 <MudThemeProvider @ref="@provider" @bind-IsDarkMode="@useDarkMode" />
 <MudLayout>
-    <MudAppBar Elevation="1" style="height: 75px">
+    <MudAppBar Elevation="2">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
         <br/>
         <MudAvatar>
@@ -23,11 +23,17 @@
     <MudMainContent Class="pt-16 pa-4" Style="margin-top: 25px; margin-bottom: 30px;">
         @Body
     </MudMainContent>
-    <MudAppBar Dense="true" Bottom="true" Elevation="1" Style="top: auto; bottom: 0" Class="mt-4" Fixed="true">
+    <MudAppBar Bottom="true" Elevation="2" Dense="true">
         <MudSpacer />
-        <MudText Typo="Typo.body2">&copy; @DateTime.Now.Year WileySoftware</MudText>
-        <MudDivider Vertical="true" Class="mx-2" DividerType="DividerType.Inset" />
-        <MudText Typo="Typo.body2">Site created with Blazor, using C# and the MudBlazor Component Library</MudText>
+        <MudText Typo="Typo.caption" Class="text-center">
+            &copy; @DateTime.Now.Year WileySoftware
+        </MudText>
+        <MudDivider DividerType="DividerType.Inset" />
+        &nbsp;
+        <MudText Typo="Typo.caption" Align="Align.Center">Site created with Blazor, using C# and the</MudText>
+        &nbsp
+        <MudIcon Icon="@Icons.Custom.Brands.MudBlazor" />
+        <MudText Typo="Typo.caption">udBlazor Compenent Library</MudText>
         <MudSpacer />
     </MudAppBar>
 </MudLayout>
