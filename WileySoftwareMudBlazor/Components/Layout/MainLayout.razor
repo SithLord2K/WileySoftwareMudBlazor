@@ -1,8 +1,8 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider @ref="@provider" @bind-IsDarkMode="@useDarkMode" />
+<MudThemeProvider Theme="_theme" />
 <MudLayout>
-    <MudAppBar Elevation="2">
+    <MudAppBar Elevation="5">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
         <br/>
         <MudAvatar>
@@ -18,13 +18,15 @@
             <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Edge="Edge.End" />
         </MudLink>
     </MudAppBar>
-    <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="285px">
+    <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="295px">
         <NavMenu />
     </MudDrawer>
     <MudMainContent Class="pt-16 pa-4" Style="margin-top: 25px; margin-bottom: 30px;">
+        <MudPaper Elevation="2">
         @Body
+        </MudPaper>
     </MudMainContent>
-    <MudAppBar Bottom="true" Elevation="2" Dense="true">
+    <MudAppBar Bottom="true" Elevation="5" Dense="true">
         <MudSpacer />
         <MudText Typo="Typo.caption" Class="text-center">
             &copy; @DateTime.Now.Year WileySoftware
@@ -49,7 +51,7 @@
 @code {
 
     private bool _drawerOpen = true;
-
+    private MudTheme _theme = new CodeCipherTheme();
     private bool useDarkMode;
     private MudThemeProvider provider = new();
 
@@ -63,16 +65,6 @@
         _drawerOpen = !_drawerOpen;
     }
 
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            useDarkMode = await provider.GetSystemDarkModeAsync();
-            await provider.WatchSystemDarkModeAsync(OnSystemPreferenceChanged);
-            StateHasChanged();
-        }
-        await base.OnAfterRenderAsync(firstRender);
-    }
 
     private async Task OnSystemPreferenceChanged(bool newValue)
     {

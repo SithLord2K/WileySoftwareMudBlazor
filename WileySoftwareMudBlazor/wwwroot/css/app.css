@@ -1,0 +1,14 @@
+﻿.mud-nav-link.active {
+    background-color: #112240 !important;
+}
+
+    .mud-nav-link.active .mud-nav-link-text,
+    .mud-nav-link.active .mud-nav-link-icon {
+        /* This now uses your theme's Primary color automatically */
+        color: var(--mud-palette-primary) !important;
+    }
+
+.mud-nav-group .mud-expand-icon {
+    /* This also uses your theme's Primary color */
+    color: var(--mud-palette-primary) !important;
+}
