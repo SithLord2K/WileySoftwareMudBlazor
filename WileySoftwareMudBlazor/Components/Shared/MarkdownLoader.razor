@@ -1,0 +1,44 @@
+﻿@* Reusable component to fetch and render Markdown from a URL. *@
+@using System.Net.Http
+@using Markdig
+@inject HttpClient Http
+
+@if (string.IsNullOrEmpty(Content))
+{
+    // Show a spinner while loading content.
+    <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+}
+else
+{
+    // Render the fetched content as HTML.
+    <MudPaper Class="pa-4" Elevation="0">
+        @((MarkupString)HtmlContent)
+    </MudPaper>
+}
+
+@code {
+    // The public URL of the raw .md file.
+    [Parameter]
+    public string? Url { get; set; }
+
+    private string? Content { get; set; }
+
+    // Convert Markdown to HTML using the Markdig library.
+    private string HtmlContent => Markdown.ToHtml(Content ?? "");
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(Url))
+        {
+            try
+            {
+                Content = await Http.GetStringAsync(Url);
+            }
+            catch (Exception ex)
+            {
+                // Display an error if the fetch fails.
+                Content = $"# Error\nCould not load content from URL.\n\n_{ex.Message}_";
+            }
+        }
+    }
+}

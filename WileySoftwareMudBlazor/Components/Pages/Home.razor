@@ -1,34 +1,6 @@
 ﻿@page "/"
-@inherits LayoutComponentBase
+@using WileySoftwareMudBlazor.Components.Shared
 
 <PageTitle>Home</PageTitle>
 
-<MudPaper Class="pa-5 ma-2" Elevation="2">
-    <MudText Typo="Typo.h4" GutterBottom="true">Welcome to my portfolio.</MudText>
-    <br />
-    <MudText Typo="Typo.body1" GutterBottom="true">
-        Welcome to my Portfolio
-        Hi, I'm Chris Wiley, an cybersecurity aficionado with nearly 30 years of IT experience. I am taking TCM Security courses in ethical hacking and penetration testing, focusing on identifying and mitigating vulnerabilities to help organizations build a stronger security posture.
-        <br />
-        My skills are a result of both my extensive professional background and a continuous, hands-on approach to learning, as demonstrated by my rankings in global CTF competitions and my active pursuit of the Practical Network Penetration Tester (PNPT) certification.
-    </MudText>
-
-    <br />
-    <MudText Typo="Typo.body2" GutterBottom="true">The navigation menu on the left will allow you to see some of the things I have done, both in life and in my pursuit of a career in Cybersecurity.</MudText>
-    <br />
-    <MudText Typo="Typo.body2">
-        Let's Connect
-        I'm actively seeking a role where I can apply my passion and expertise to a dynamic team. Take a look at my featured projects, view my full resume, or feel free to contact me directly.
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2">
-        This is my TryHackMe profile badge:
-        <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1270262" style='border:none;'></iframe>
-    </MudText>
-    <MudText Typo="Typo.body2">
-        Download my full resume:
-        <MudIconButton Color="Color.Inherit" Icon="@Icons.Material.Filled.Download" Href="/Resume/Chris_Wiley_Resume_2025.pdf" Target="_blank">
-            Download Resume
-        </MudIconButton>
-    </MudText>
-</MudPaper>
+<MarkdownLoader Url="https://raw.githubusercontent.com/SithLord2K/portfolio-content/main/Home.md" />

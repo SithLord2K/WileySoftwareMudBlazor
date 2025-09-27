@@ -1,25 +1,6 @@
 ﻿@page "/pnpt-courses/csharp-101"
-@inherits LayoutComponentBase
+@using WileySoftwareMudBlazor.Components.Shared
 
 <PageTitle>C# 101 for Hackers</PageTitle>
 
-<MudPaper Class="pa-5 ma-2" Elevation="2">
-    <MudText Typo="Typo.h4" GutterBottom="true">C# 101 for Hackers</MudText>
-    <br />
-    <MudText Typo="Typo.body1" GutterBottom="true">
-        This course is designed to introduce hackers to the fundamentals of C# programming. It covers basic syntax, data types, control structures, and object-oriented programming concepts.
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2" GutterBottom="true">
-        The course includes practical exercises and examples to help you understand how to write and execute C# code effectively.
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2">
-        <strong>Course Completion Certificate:</strong>
-    </MudText>
-    <MudImage Fluid="true" Src="Images/Certificates/PNPT/certificate-of-completion-for-c-101-for-hackers.png" />
-</MudPaper>
-
-@code {
-
-}
+<MarkdownLoader Url="https://raw.githubusercontent.com/SithLord2K/portfolio-content/main/CSharp101.md" />

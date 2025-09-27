@@ -1,19 +1,26 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime JSRuntime
 
-<MudThemeProvider Theme="_theme" />
+<MudThemeProvider Theme="_theme" @bind-IsDarkMode="_isDarkMode" />
 <MudLayout>
     <MudAppBar Elevation="5">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle" />
-        <br/>
         <MudAvatar>
             <MudImage Src="Images/ChrisWiley.jpg" />
         </MudAvatar>
-        <MudText Typo="Typo.h5" Class="ml-3">Chris Wiley - Junior QA Analyst</MudText>
+
+        @* This block correctly handles the title for different screen sizes *@
+        <MudHidden Breakpoint="Breakpoint.Xs" Down="true">
+            <MudText Typo="Typo.h5" Class="ml-3">Chris Wiley - Junior QA Analyst</MudText>
+        </MudHidden>
+        <MudHidden Breakpoint="Breakpoint.Sm" Up="true">
+            <MudText Typo="Typo.h6" Class="ml-3">Chris Wiley</MudText>
+        </MudHidden>
+
         <MudSpacer />
         <MudLink Href="https://github.com/SithLord2K?tab=repositories" Target="_blank">
             <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Edge="Edge.End" />
         </MudLink>
-        &nbsp;
         <MudLink Href="https://www.linkedin.com/in/chris-wiley-007b9585/" Target="_blank">
             <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Edge="Edge.End" />
         </MudLink>
@@ -23,7 +30,7 @@
     </MudDrawer>
     <MudMainContent Class="pt-16 pa-4" Style="margin-top: 25px; margin-bottom: 30px;">
         <MudPaper Elevation="2">
-        @Body
+            @Body
         </MudPaper>
     </MudMainContent>
     <MudAppBar Bottom="true" Elevation="5" Dense="true">
@@ -41,7 +48,6 @@
     </MudAppBar>
 </MudLayout>
 
-
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.
     <a href="." class="reload">Reload</a>
@@ -49,29 +55,21 @@
 </div>
 
 @code {
-
     private bool _drawerOpen = true;
-    private MudTheme _theme = new CodeCipherTheme();
-    private bool useDarkMode;
-    private MudThemeProvider provider = new();
+    private bool _isDarkMode;
+    private MudTheme _theme = new TronTheme();
 
-    protected override void OnInitialized()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        base.OnInitialized();
+        if (firstRender)
+        {
+            _isDarkMode = await JSRuntime.InvokeAsync<bool>("isDarkMode");
+            StateHasChanged();
+        }
     }
 
     private void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
     }
-
-
-    private async Task OnSystemPreferenceChanged(bool newValue)
-    {
-        useDarkMode = newValue;
-        StateHasChanged();
-        await Task.CompletedTask;
-    }
 }
-
-

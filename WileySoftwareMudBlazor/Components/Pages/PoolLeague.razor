@@ -1,39 +1,6 @@
 ﻿@page "/poolleague"
-@inherits LayoutComponentBase
+@using WileySoftwareMudBlazor.Components.Shared
 
 <PageTitle>Welland Pool League Tracker</PageTitle>
 
-<MudPaper Class="pa-5 ma-2" Elevation="2">
-    <MudText Typo="Typo.h4" GutterBottom="true">Welland Pool League Tracker</MudText>
-    <br />
-    <MudText Typo="Typo.body1" GutterBottom="true">
-        This is a site I created to track the Welland Pool League standings, player statistics, schedules, and match results.
-        <br />
-        As the league administrator has not yet adopted this site, I have been using it to track my teams statistics.
-        <br />
-        We are going to try and push for this to be used for the 2025/2026 season. This will allow all players to view their statistics, standings, schedules and match results instead of waiting for the league administrator to post updates in the facebook group twice per season.
-        <br /><br/>
-        This was created in Blazor, using C# and the MudBlazor Compontent Library. 
-        <br />
-        I also use a Microsoft SQL Server database to store the data.
-        I was using an API to serve the data but opted to use DataFactories instead to simplify the architecture and the performance is much better.
-        <br />
-        I am using Auth0 for authentication and authorization. This allows me to easily manage users and roles.
-        <br />
-        There is an administration area where I can manage teams, players, schedules, and statistics.
-        The Team Standings show the three Divisions the league has and the teams will show in the appropriate division based on number of weeks/games won.
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2" GutterBottom="true">
-        Click the image below to visit the site.
-        </MudText>
-    <MudText Typo="Typo.body2" GutterBottom="true">
-        <MudLink Href="https://wpl.codersden.com" Target="_blank">
-            <MudImage Fluid="true" Src="Images/WPLPreview.png" Elevation="25" /> 
-        </MudLink>
-    </MudText>
-    </MudPaper>
-
-@code {
-
-}
+<MarkdownLoader Url="https://raw.githubusercontent.com/SithLord2K/portfolio-content/main/PoolLeague.md" />

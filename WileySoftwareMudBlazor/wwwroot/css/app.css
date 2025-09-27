@@ -1,14 +1,112 @@
-﻿.mud-nav-link.active {
-    background-color: #112240 !important;
+﻿/*
+Developer: Chris Wiley
+Date: 2025-09-27
+Comment: Final Tron Theme CSS with responsive image styling for Markdown.
+*/
+
+/* --- App Bar Glow --- */
+.mud-appbar {
+    box-shadow: 0 2px 10px -2px var(--mud-palette-primary);
 }
 
-    .mud-nav-link.active .mud-nav-link-text,
-    .mud-nav-link.active .mud-nav-link-icon {
-        /* This now uses your theme's Primary color automatically */
-        color: var(--mud-palette-primary) !important;
+.mud-appbar-bottom {
+    box-shadow: 0 -2px 10px -2px var(--mud-palette-primary);
+}
+
+/* --- Navigation Menu Glow & Spacing --- */
+.mud-nav-link {
+    margin: 4px 0;
+}
+
+    .mud-nav-link.active {
+        border-radius: 4px;
+        box-shadow: 0 0 6px var(--mud-palette-primary), 0 0 12px var(--mud-palette-primary);
     }
 
+.mud-nav-menu {
+    padding: 8px;
+}
+
+.mud-nav-link.active .mud-nav-link-text,
+.mud-nav-link.active .mud-nav-link-icon {
+    color: #FFFFFF !important;
+}
+
 .mud-nav-group .mud-expand-icon {
-    /* This also uses your theme's Primary color */
     color: var(--mud-palette-primary) !important;
+}
+
+.mud-drawer-content {
+    background-color: #1C1C1C !important;
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 600px) {
+    .mud-typography-h4 {
+        font-size: 1.5rem !important;
+    }
+
+    .mud-typography-body1, .mud-typography-body2 {
+        font-size: 0.875rem !important;
+    }
+
+    .mud-paper {
+        padding: 16px !important;
+    }
+}
+
+/* --- Rendered Markdown Styling --- */
+.mud-paper h1, .mud-paper h2, .mud-paper h3, .mud-paper h4, .mud-paper h5, .mud-paper h6 {
+    color: var(--mud-palette-primary);
+    font-family: "Fira Code", monospace;
+    font-weight: 500;
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.mud-paper p {
+    color: var(--mud-palette-text-secondary);
+    line-height: 1.6;
+}
+
+.mud-paper a {
+    color: var(--mud-palette-primary);
+    text-decoration: underline;
+}
+
+.mud-paper hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--mud-palette-primary), rgba(0, 0, 0, 0));
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.mud-paper strong {
+    color: var(--mud-palette-text-secondary);
+}
+
+.mud-paper pre {
+    background-color: #0A192F;
+    border: 1px solid var(--mud-palette-lines-default);
+    border-radius: 4px;
+    padding: 16px;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.mud-paper code {
+    font-family: "Fira Code", monospace;
+    color: var(--mud-palette-text-secondary);
+}
+
+/* This is the new rule to control image sizes from Markdown */
+.mud-paper img {
+    max-width: 75%; /* The image will never be wider than 75% of its container */
+    height: auto; /* Maintain the aspect ratio */
+    display: block; /* Allows margin auto to work for centering */
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid var(--mud-palette-primary); /* Optional: adds a themed border */
+    border-radius: 4px;
 }

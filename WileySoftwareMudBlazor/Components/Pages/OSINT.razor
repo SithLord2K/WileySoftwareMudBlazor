@@ -1,25 +1,6 @@
 ﻿@page "/pnpt-courses/osint"
-@inherits LayoutComponentBase
+@using WileySoftwareMudBlazor.Components.Shared
 
 <PageTitle>Open Source Intelligence (OSINT)</PageTitle>
 
-<MudPaper Class="pa-5 ma-2" Elevation="2">
-    <MudText Typo="Typo.h4" GutterBottom="true">Open Source Intelligence (OSINT)</MudText>
-    <br />
-    <MudText Typo="Typo.body1" GutterBottom="true">
-        This course covers the fundamentals of Open Source Intelligence (OSINT), including techniques for gathering and analyzing publicly available information to support cybersecurity operations.
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2" GutterBottom="true">
-        The course includes practical exercises and real-world scenarios to enhance your OSINT skills.
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2">
-        <strong>Course Completion Certificate:</strong>
-    </MudText>
-    <MudImage Fluid="true" Src="Images/Certificates/PNPT/certificate-of-completion-for-open-source-intelligence-osint-fundamental.png" />
-</MudPaper>
-
-@code {
-
-}
+<MarkdownLoader Url="https://raw.githubusercontent.com/SithLord2K/portfolio-content/main/OSINT.md" />

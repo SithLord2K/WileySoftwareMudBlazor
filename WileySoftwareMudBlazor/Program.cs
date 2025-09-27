@@ -3,6 +3,10 @@ using WileySoftwareMudBlazor.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// This is the new line that fixes the error.
+// It registers the HttpClient service so it can be injected into components.
+builder.Services.AddHttpClient();
+
 // Add MudBlazor services
 builder.Services.AddMudServices();
 
@@ -22,10 +26,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-
+app.UseStaticFiles();
 app.UseAntiforgery();
 
-app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
 

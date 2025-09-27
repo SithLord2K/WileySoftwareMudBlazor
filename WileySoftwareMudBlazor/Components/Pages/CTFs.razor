@@ -1,58 +1,6 @@
 ﻿@page "/ctf/metactf"
-@inherits LayoutComponentBase
+@using WileySoftwareMudBlazor.Components.Shared
 
 <PageTitle>MetaCTF Flash CTFs</PageTitle>
 
-<MudPaper Class="pa-5 ma-2" Elevation="2">
-    <MudText Typo="Typo.h4" GutterBottom="true">MetaCTF Flash CTFs</MudText>
-    <br />
-    <MudText Typo="Typo.body2" GutterBottom="true">These are some of the CTFs I have completed on MetaCTF.
-        <br />
-        These are short Capture the Flag challenges that are designed to be completed in a short amount of time, typically two hours. They cover a variety of topics and are a great way to practice your skills.
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2">
-        <center>
-            April 2024
-            <br />
-            I completed in the MetaCTF April Flash CTF. I placed 147th out of 300 active participants.
-        </center>
-
-        <br />
-        <center>
-            <MudImage Fluid="true" Src="Images/Certificates/MetaCTF/MetaCTF_April_2024_Flash_CTF_Certficate.png" />
-        </center>
-
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2">
-        <center>
-            March 2024
-            <br />
-            I completed in the MetaCTF March Flash CTF. I placed 138th out of 329 active participants.
-        </center>
-
-        <br />
-        <center>
-            <MudImage Fluid="true" Src="Images/Certificates/MetaCTF/MetaCTF_March_2024_Flash_CTF_Certficate.png" />
-        </center>
-
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2">
-        <center>
-            December 16, 2023
-            <br />
-            I completed in the MetaCTF TCM Security Invitational CTF. This was a team CTF and my team placed 20th out of 166 active teams.
-        </center>
-        <br />
-        <center>
-            <MudImage Fluid="true" Src="Images/Certificates/MetaCTF/TCM_MetaCTF_Invitational_CTF_2023_Certificate.png" />
-        </center>
-
-    </MudText>
-</MudPaper>
-
-@code {
-
-}
+<MarkdownLoader Url="https://raw.githubusercontent.com/SithLord2K/portfolio-content/main/CTFs.md" />

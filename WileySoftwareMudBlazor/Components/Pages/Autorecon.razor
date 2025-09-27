@@ -1,32 +1,6 @@
 ﻿@page "/autorecon"
-@inherits LayoutComponentBase
+@using WileySoftwareMudBlazor.Components.Shared
 
 <PageTitle>Autorecon Install Script</PageTitle>
 
-<MudPaper Class="pa-5 ma-2" Elevation="2">
-    <MudText Typo="Typo.h4" GutterBottom="true">Autorecon Install Script</MudText>
-    <br />
-    <MudText Typo="Typo.body1" GutterBottom="true">
-        This is a script I created to automate the installation of Autorecon, a tool used for automated reconnaissance in penetration testing.
-        <br />
-        It simplifies the setup process by handling dependencies and configurations.
-        <br /><br />
-        The script is written in python and can be run on Kali Linux systems.
-        <br />
-        This script consists of two files, autoreconinstall.py and requiredpackages.txt.
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2" GutterBottom="true">
-        This is the python script.
-        <iframe src="Autorecon/autoreconinstall.txt" ></iframe>
-    </MudText>
-    <br />
-    <MudText Typo="Typo.body2" GutterBottom="true">
-        This is the required packages file.
-        <iframe src="Autorecon/requiredpackages.txt"></iframe>
-        </MudText>
-</MudPaper>
-
-@code {
-
-}
+<MarkdownLoader Url="https://raw.githubusercontent.com/SithLord2K/portfolio-content/main/Autorecon.md" />
