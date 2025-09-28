@@ -1,7 +1,7 @@
 ﻿/*
 Developer: Chris Wiley
 Date: 2025-09-27
-Comment: Final Tron Theme CSS with responsive image styling for Markdown.
+Comment: Final Tron Theme CSS with list indentation styling.
 */
 
 /* --- App Bar Glow --- */
@@ -64,7 +64,7 @@ Comment: Final Tron Theme CSS with responsive image styling for Markdown.
     margin-bottom: 16px;
 }
 
-.mud-paper p {
+.mud-paper p, .mud-paper li {
     color: var(--mud-palette-text-secondary);
     line-height: 1.6;
 }
@@ -82,10 +82,6 @@ Comment: Final Tron Theme CSS with responsive image styling for Markdown.
     margin-bottom: 24px;
 }
 
-.mud-paper strong {
-    color: var(--mud-palette-text-secondary);
-}
-
 .mud-paper pre {
     background-color: #0A192F;
     border: 1px solid var(--mud-palette-lines-default);
@@ -100,13 +96,18 @@ Comment: Final Tron Theme CSS with responsive image styling for Markdown.
     color: var(--mud-palette-text-secondary);
 }
 
-/* This is the new rule to control image sizes from Markdown */
 .mud-paper img {
-    max-width: 75%; /* The image will never be wider than 75% of its container */
-    height: auto; /* Maintain the aspect ratio */
-    display: block; /* Allows margin auto to work for centering */
+    max-width: 75%;
+    height: auto;
+    display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid var(--mud-palette-primary); /* Optional: adds a themed border */
+    border: 1px solid var(--mud-palette-primary);
     border-radius: 4px;
+}
+
+/* This is the new rule to fix list indentation */
+.mud-paper ul {
+    /* Adds padding to the left of the entire list */
+    padding-left: 40px;
 }

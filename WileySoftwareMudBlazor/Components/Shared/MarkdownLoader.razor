@@ -19,9 +19,9 @@ else
 @code {
     // The public URL of the raw .md file.
     [Parameter]
-    public string? Url { get; set; }
+    public string Url { get; set; }
 
-    private string? Content { get; set; }
+    private string Content { get; set; }
 
     // Convert Markdown to HTML using the Markdig library.
     private string HtmlContent => Markdown.ToHtml(Content ?? "");
@@ -32,7 +32,10 @@ else
         {
             try
             {
-                Content = await Http.GetStringAsync(Url);
+                // By adding a unique timestamp to the URL, we ensure the browser
+                // and any intermediate proxies cannot serve a cached version.
+                var urlWithCacheBuster = $"{Url}?v={DateTime.Now.Ticks}";
+                Content = await Http.GetStringAsync(urlWithCacheBuster);
             }
             catch (Exception ex)
             {
