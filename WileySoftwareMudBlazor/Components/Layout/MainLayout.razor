@@ -1,5 +1,6 @@
 ﻿@inherits LayoutComponentBase
 @inject IJSRuntime JSRuntime
+@using WileySoftwareMudBlazor.Components.Layout
 
 <MudThemeProvider Theme="_theme" @bind-IsDarkMode="_isDarkMode" />
 <MudLayout>
@@ -57,7 +58,7 @@
 @code {
     private bool _drawerOpen = true;
     private bool _isDarkMode;
-    private MudTheme _theme = new TronTheme();
+    private MudTheme _theme = new ProfessionalTheme();
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
