@@ -1,43 +1,42 @@
 ﻿/*
 Developer: Chris Wiley
-Date: 2025-09-27
-Comment: Custom app styles and list indentation.
+Date: 2025-11-02
+Comment: Professional portfolio styles.
 */
 
-.mud-appbar {
-    box-shadow: 0 2px 10px -2px var(--mud-palette-primary);
-}
-
-.mud-appbar-bottom {
-    box-shadow: 0 -2px 10px -2px var(--mud-palette-primary);
-}
-
+/* --- Professional Navigation Menu --- */
 .mud-nav-link {
     margin: 4px 0;
 }
 
+    /* A simple background highlight for the active link, no glow */
     .mud-nav-link.active {
         border-radius: 4px;
-        box-shadow: 0 0 6px var(--mud-palette-primary), 0 0 12px var(--mud-palette-primary);
+        background-color: var(--mud-palette-action-default-hover);
     }
 
 .mud-nav-menu {
     padding: 8px;
 }
 
+/* Make active text/icons use the primary (blue) color */
 .mud-nav-link.active .mud-nav-link-text,
 .mud-nav-link.active .mud-nav-link-icon {
-    color: var(--mud-palette-primary-contrast-text) !important;
-}
-
-.mud-nav-group .mud-expand-icon {
     color: var(--mud-palette-primary) !important;
 }
 
+/* Make expand icons match the normal text color */
+.mud-nav-group .mud-expand-icon {
+    color: var(--mud-palette-text-primary) !important;
+}
+
+/* Let the theme control the drawer background */
 .mud-drawer-content {
     background-color: var(--mud-palette-drawer-background) !important;
 }
 
+
+/* --- Mobile Responsiveness --- */
 @media (max-width: 600px) {
     .mud-typography-h4 {
         font-size: 1.5rem !important;
@@ -52,9 +51,11 @@ Comment: Custom app styles and list indentation.
     }
 }
 
+/* --- Clean Markdown Styling --- */
+
+/* Headers will now use the Theme's font (Inter) */
 .mud-paper h1, .mud-paper h2, .mud-paper h3, .mud-paper h4, .mud-paper h5, .mud-paper h6 {
     color: var(--mud-palette-primary);
-    font-family: "Fira Code", monospace;
     font-weight: 500;
     margin-top: 24px;
     margin-bottom: 16px;
@@ -73,11 +74,12 @@ Comment: Custom app styles and list indentation.
 .mud-paper hr {
     border: 0;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--mud-palette-primary), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--mud-palette-lines-default), rgba(0, 0, 0, 0));
     margin-top: 24px;
     margin-bottom: 24px;
 }
 
+/* Code blocks */
 .mud-paper pre {
     background-color: var(--mud-palette-background-grey);
     border: 1px solid var(--mud-palette-lines-default);
@@ -88,18 +90,19 @@ Comment: Custom app styles and list indentation.
 }
 
 .mud-paper code {
-    font-family: "Fira Code", monospace;
+    font-family: monospace; /* Use a standard monospace font */
     color: var(--mud-palette-text-secondary);
 }
 
+/* Images */
 .mud-paper img {
     max-width: 75%;
     height: auto;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid var(--mud-palette-primary);
     border-radius: 4px;
+    /* Removed the primary-color border */
 }
 
 .mud-paper ul {

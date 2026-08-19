@@ -1,0 +1,49 @@
+﻿@page "/{*RoutePath}"
+@using WileySoftwareMudBlazor.Services
+@using WileySoftwareMudBlazor.Components.Shared
+@inject ContentService ContentService
+
+<PageTitle>@_pageTitle</PageTitle>
+
+@if (_isLoading)
+{
+    <MudProgressCircular Color="Color.Primary" Indeterminate="true" />
+}
+else if (!string.IsNullOrEmpty(_markdownFileName))
+{
+    <MarkdownLoader Url="@($"https://raw.githubusercontent.com/SithLord2K/portfolio-content/main/{_markdownFileName}")" />
+}
+else
+{
+    <MudText Color="Color.Error">Content not found for route: @RoutePath</MudText>
+}
+
+@code {
+    /// <summary>
+    /// Catches the dynamic route segment after /view/ to map to a remote Markdown file.
+    /// </summary>
+    [Parameter]
+    public string? RoutePath { get; set; }
+
+    private string _pageTitle = "Loading...";
+    private string? _markdownFileName;
+    private bool _isLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        _isLoading = true;
+
+        if (!string.IsNullOrWhiteSpace(RoutePath))
+        {
+            _markdownFileName = await ContentService.GetMarkdownFileNameAsync(RoutePath);
+            _pageTitle = _markdownFileName != null ? _markdownFileName.Replace(".md", "") : "Not Found";
+        }
+        else
+        {
+            _markdownFileName = null;
+            _pageTitle = "Not Found";
+        }
+
+        _isLoading = false;
+    }
+}

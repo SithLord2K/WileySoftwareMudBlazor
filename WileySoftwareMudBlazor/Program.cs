@@ -1,14 +1,13 @@
 using MudBlazor.Services;
 using WileySoftwareMudBlazor.Components;
+using WileySoftwareMudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// This is the new line that fixes the error.
-// It registers the HttpClient service so it can be injected into components.
 builder.Services.AddHttpClient();
 
-// Add MudBlazor services
 builder.Services.AddMudServices();
+builder.Services.AddScoped<ContentService>();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

@@ -17,29 +17,30 @@ else
 }
 
 @code {
-    // The public URL of the raw .md file.
     [Parameter]
     public string Url { get; set; }
 
     private string Content { get; set; }
+    private string _lastUrl;
 
-    // Convert Markdown to HTML using the Markdig library.
     private string HtmlContent => Markdown.ToHtml(Content ?? "");
 
-    protected override async Task OnInitializedAsync()
+    // Fires every time the parameters (like Url) change
+    protected override async Task OnParametersSetAsync()
     {
-        if (!string.IsNullOrEmpty(Url))
+        // Only fetch if the URL has actually changed
+        if (!string.IsNullOrEmpty(Url) && Url != _lastUrl)
         {
+            _lastUrl = Url;
+            Content = null; // Clear old content to show the spinner
+
             try
             {
-                // By adding a unique timestamp to the URL, we ensure the browser
-                // and any intermediate proxies cannot serve a cached version.
                 var urlWithCacheBuster = $"{Url}?v={DateTime.Now.Ticks}";
                 Content = await Http.GetStringAsync(urlWithCacheBuster);
             }
             catch (Exception ex)
             {
-                // Display an error if the fetch fails.
                 Content = $"# Error\nCould not load content from URL.\n\n_{ex.Message}_";
             }
         }

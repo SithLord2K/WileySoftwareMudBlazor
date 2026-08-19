@@ -10,7 +10,6 @@
             <MudImage Src="Images/ChrisWiley.jpg" />
         </MudAvatar>
 
-        @* This block correctly handles the title for different screen sizes *@
         <MudHidden Breakpoint="Breakpoint.Xs" Down="true">
             <MudText Typo="Typo.h5" Class="ml-3">Chris Wiley - Junior QA Analyst</MudText>
         </MudHidden>
@@ -19,12 +18,21 @@
         </MudHidden>
 
         <MudSpacer />
-        <MudLink Href="https://github.com/SithLord2K?tab=repositories" Target="_blank">
-            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Edge="Edge.End" />
-        </MudLink>
-        <MudLink Href="https://www.linkedin.com/in/chris-wiley-007b9585/" Target="_blank">
-            <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Edge="Edge.End" />
-        </MudLink>
+
+        @* --- NEW THEME TOGGLE BUTTON --- *@
+        <MudIconButton Icon="@(_isDarkMode? Icons.Material.Filled.WbSunny : Icons.Material.Filled.NightsStay)" Color="Color.Inherit" OnClick="ToggleDarkModeAsync" />
+
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub"
+                       Color="Color.Inherit"
+                       Edge="Edge.End"
+                       Href="https://github.com/SithLord2K?tab=repositories"
+                       Target="_blank" />
+
+        <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn"
+                       Color="Color.Inherit"
+                       Edge="Edge.End"
+                       Href="https://www.linkedin.com/in/chris-wiley-007b9585/"
+                       Target="_blank" />
     </MudAppBar>
     <MudDrawer id="nav-drawer" @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2" Width="295px">
         <NavMenu />
@@ -59,14 +67,27 @@
     private bool _drawerOpen = true;
     private bool _isDarkMode;
     private MudTheme _theme = new ProfessionalTheme();
+    private const string CookieKey = "darkModePreference";
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            _isDarkMode = await JSRuntime.InvokeAsync<bool>("isDarkMode");
+            // Try to read the cookie value
+            var cookieValue = await JSRuntime.InvokeAsync<string>("getCookie", CookieKey);
+
+            // If the cookie exists, set the theme. Otherwise, default to false (light mode).
+            _isDarkMode = cookieValue == "true";
+
             StateHasChanged();
         }
+    }
+
+    private async Task ToggleDarkModeAsync()
+    {
+        _isDarkMode = !_isDarkMode;
+        // Save the new preference to a cookie that lasts for 365 days
+        await JSRuntime.InvokeVoidAsync("setCookie", CookieKey, _isDarkMode.ToString().ToLower(), 365);
     }
 
     private void DrawerToggle()
